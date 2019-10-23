@@ -1,0 +1,5 @@
+The logical vulnerability of this run.py is time of check to time of use.
+The validation takes a long time, and if we can manipulate the input data between the validation and execution we can pass the validation and execute whatever command we want.
+So at first we send the correct file, which is exactly like example.json (the file was created with json.dump(data, file)).
+We call run.py on this input and let it validate it (in the background using subprocess.popen and communicate).
+After for example, one second (less than the validation time) using time.sleep, we change the input file (using json.dump(data, file)) to include a command echo hacked and we're done.

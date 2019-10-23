@@ -1,0 +1,6 @@
+The logical vulnerability in run.py is the use of eval. 
+eval function parses the expression passed to it and runs python expression (code) within the program.
+Since we have full control of the input to run.py, we don't actually have to generate a file that contains a dicitionary.
+We can generate a file that contains the string os.sytem('echo hacked') and when eval would take place it will echo hacked.
+Conviently os was already imported in run.py, but if not we could still put a string in the file like so:
+'__import__("os").system("echo hacked")'

@@ -1,0 +1,14 @@
+The logical vulnerability was that we validate on the key of a dicionary but execute on the first time we see "command:"
+In python, when we initialize a dictionary we can do so with the same key twice, and last one will be the key, for example:
+d = {"a": 1, "b": 2, "a": 3}
+>> d["a"]
+>> 3
+
+So if we put this dictionary as a string, and the first command will be echo hacked, the signature will be the signature from the example and the second command will be the command from the example we got it.
+
+So in conclusion:
+
+return '{"command": "echo hacked", "signature": signature that passes validation (from example), "command": command that passes validation}'
+
+It is also important not to return json.dumps of this string because it will omit the first command key-value.
+So just return this string as it is.

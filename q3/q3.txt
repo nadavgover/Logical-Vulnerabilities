@@ -1,0 +1,3 @@
+The logical vulnerability was using the indices of the input to validate.
+We just inputed "::echo hacked" and it passed the validation.
+And we're done.

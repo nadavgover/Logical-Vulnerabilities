@@ -1,0 +1,7 @@
+The logical vulnerability this time is an unsafe use of pickle.load.
+Since we have full control of the input we can use pickle.dumps to whatever we want.
+The pickle module allows us to define how the data will be pickled using __reduce__ function.
+It returns a tuple of callable and arguments.
+I used the callable as os.system and the arguments as echo hacked.
+All this I put inside a class and pickled the class.
+When run.py unpickled it it printed hacked, and we're done.
